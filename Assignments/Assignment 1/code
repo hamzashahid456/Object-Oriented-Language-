@@ -1,0 +1,70 @@
+#include<iostream>
+#include<stdio.h>
+#include<string>
+using namespace std;
+int main(){
+    char p;
+    cout << "You want to play? y/n " << endl;
+    cin >> p;
+    while(p == 'y'){
+    int warn=0;
+    string arr1[]={"apple","orange","green","watermelon","pear","strawberry","grape","plum","mango","blueberry",
+                    "papaya","apricot","mandarin","banana","grapefruit","lemon","lime","pineapple","jackfruit","melon",
+                    "coconut","avocado","peach","kiwi","blackcurrant","blackberry","cherry","fig","lychee","nectarine",
+                    "quince","raspberry","tangerine","pomegranate","mulberry","starfruit","guava","pomelo","cranberry","tamarillo",
+                     "camarillo","cubature","soursop","uchuva","granadilla","durian","longan","rambutan","tamarind","persimmon",
+                      "mangosteen","amla","cucumber","onion","garlic","carrot","cabbage","radish","eggplant","mushroom",
+                       "artichoke","corn","broccoli","cauliflower","celery","chili","potato","asparagus","pumpkin","fennel",
+                        "turnip","lettuce","courgette","brussels","tomato","potato","pea","spinach","beetroot","pepper",
+                         "leek","ginger","squash","coriander","cilantro","cabbage","arugula","kale","rutabaga","yam",
+                          "burgers","kebab","fries","patties","pizza","zinger","chicken","rice","grains","eggs",
+    };
+    string d, word;
+    int r = (rand()%100);
+    int len = arr1[r].length();
+    for(int i=0; i< len ; i++){
+        d.append(1,'_');
+    }
+    cout << d << endl;
+    word=arr1[r];
+    cout << "Enter character: " << endl;
+    while(true){
+        char usr;
+        int count=0;
+        cin >> usr;
+        for(int j=0; j< len; j++){
+            if(usr == word[j]){
+                string s;
+                s.push_back(usr);
+                d.replace(j, 1, s);
+            }
+            else{
+                count=count+1;
+            } 
+        }
+        cout << d << endl;
+        if( count == len){
+            warn=warn+1;
+        }
+        if(d == word){
+            cout << "YOU WIN!" << endl;
+            break;
+        }
+        else if(warn == 5){
+            cout << "You lose!" << endl;
+            break;
+        }
+        else{
+            continue;
+        }
+    }
+    cout << "You want to play again? y/n" << endl;
+    cin >> p;
+    if(p == 'y'){
+        continue;
+    }
+    else{
+        break;
+    }
+    }
+}
